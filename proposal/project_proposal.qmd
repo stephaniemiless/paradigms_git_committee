@@ -1,0 +1,58 @@
+---
+title: "Final Project Proposal"
+subtitle: "Statistical Programming Paradigms and Workflows (BSPH 140.777)"
+author: "Team Git Committee"
+format:
+  pdf:
+    documentclass: article
+    papersize: letter
+    geometry:
+      - margin=0.8in
+    fontsize: 11pt
+    linestretch: 1.05
+    colorlinks: false
+    toc: false
+header-includes:
+  - |
+    \usepackage{etoolbox}
+    \usepackage{needspace}
+    \BeforeBeginEnvironment{Shaded}{\par\noindent\begin{minipage}{\linewidth}}
+    \AfterEndEnvironment{Shaded}{\end{minipage}}
+engine: knitr
+execute:
+  echo: true
+  warning: false
+---
+
+**Group Leader**: Steph Miles
+
+**Other Members**: Eva Breiland, Allison Chen, Fabiana Lopez Muniz, and Ania Martynuk
+
+**GitHub Repository**: https://github.com/stephaniemiless/paradigms_git_committee/tree/main 
+
+---
+
+
+## Research Question and Audience
+
+RQ: Is there an association between air quality and asthma flare-ups (described as Emergency Department Visits/Hospitalizations for asthma) in the United States at the State level?
+
+## Related Work
+
+## Data and Access
+
+## Planned Work
+
+## Programming Paradigms
+
+## Software
+
+- Programming Language: R
+- Packages: Shiny, ggplot, dplyr, tidyverse, machine learning packages (ie. randomForest, xgboost, caret)
+
+## Product
+
+## Timeline and Feasibility
+
+## Team Responsibilities 
+
