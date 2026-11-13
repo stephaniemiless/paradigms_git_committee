@@ -35,13 +35,15 @@ execute:
 
 ## Research Question and Audience
 
-RQs: 
+**Research Questions**: 
 
 1. Is there an association between air quality and asthma flare-ups (described as Emergency Department Visits/Hospitalizations for asthma) in the United States at the State level? Which states have stronger associations?
 
 - **Why does this matter?** Climate change exacerbates the health impacts of poor air quality. The WHO estimates that air pollution is responsible for 7 million premature deaths annually, making it one of the largest global risk factors for death, trailing only high blood pressure, smoking, and diabetes.  
 
 2. 
+
+**Intended Audience**: As we are limiting our geographical region to the US at the state level, the intended audience would be people living in the US. Ideally, users can use it every day to check recent air quality statuses and predict those for the next few days as well.
 
 ## Related Work
 
@@ -50,6 +52,11 @@ RQs:
 We plan on getting our data from the Centers for Disease Control and Prevention’s (CDC) National Environmental Public Health Tracking Network API. This API contains national, state, and county-level data on Asthma prevalence for adults and children, Emergency Department Visits for asthma, and hospitalizations for asthma. This API is free and accessible to use, which allows us to retrieve the JSON data and parse it into an R data set that we will inspect for missing values.
 
 We additionally plan to request the Air quality data from the CDC National Environmental Public Health Tracking Network API since this API contains county-level data for pollutants such as ozone levels and PM2.5 concentration that would serve useful. From this API, we will retrieve the JSON data and parse it into an R data set that we will further clean by removing missing values. If the data for a county or state of interest is not available in the CDC API, we plan on retrieving the data from the USA Environmental Protection Agency’s API on air quality. This API is free to retrieve data after creating an account, and we will retrieve the JSON data and import it into R. From there, we will account for missing values. 
+
+To incorporate social determinants of health into our analysis, we also plan to retrieve demographic, socioeconomic, and housing data from the U.S. Census Bureau's API, primarily using the American Community Survey (ACS) 5-Year Estimates. We will request a U.S. Census Data API Key. This dataset provides county-level information on population characteristics, median household income, poverty rates, educational attainment, employment, health insurance coverage, racial and ethnic composition, and housing conditions. These indicators will allow us to investigate how socioeconomic characteristics may relate to differences in environmental exposures and asthma-related health outcomes across communities. 
+
+API requests will specify the relevant ACS variables and geographic level, returning JSON data that can be converted into R data frames. We will select relevant demographic and economic indicators, standardize variable names and data types, and reshape the data into a wide format with one observation per county and separate columns for each indicator. We will retain available estimates and margins of error to account for the uncertainty associated with survey-based estimates. We will create a unified county-level dataset containing air quality measurements, asthma prevalence and healthcare utilization, and socioeconomic characteristics. We will use this combined dataset to examine potential relationships between social determinants of health, environmental exposures, and asthma burden. For example, we could investigate whether counties with higher poverty rates, lower household incomes, or lower health insurance coverage experience different asthma-related health outcomes at comparable levels of air pollution. These analyses will help us identify communities that may face overlapping environmental and socioeconomic vulnerabilities and provide additional context for interpreting the geographic distribution of asthma burden.
+
 
 **API Links**: 
 
@@ -63,7 +70,23 @@ We additionally plan to request the Air quality data from the CDC National Envir
 
 ## Planned Work
 
+1. General EDA on EPA API air quality and CDC ER datasets
+
+2. 
+
+3. Develop Shiny dashboard
+
+After importing the data into R, we plan on accounting for missing values within counties and states to identify the gaps within our analysis. After cleaning the data for missing values, we plan on creating figures such as histograms and scatterplots that we believe would be pertinent to include in the R Shiny dashboard. We plan on finding descriptive statistics, such as the mean pollutant levels in states by looking at county data and using this to present the states with the highest mean air pollutant levels. We also plan on creating figures displaying the states with the highest prevalence of asthma stratified by age group. For the figures portraying the associations, we plan to utilize either scatterplots of the distributions or histograms depending on what the data looks like. On our interactive dashboard, we plan on having options where users can decide which figures they would like to look at such as specifying a metric or state they are interested in.
+
 ## Programming Paradigms
+
+We aren't 100% knowledgeable of the exact tasks we will be carrying out for this project, but we do believe that our programs will incorporate the following paradigms:
+
+- **Functional programming**: Through data cleaning and other analyses, there is bound to be repeated code that could be refactored through resuable operations and mapping operations. Packages like ```purrr``` and ```rvest``` could be utilized here. 
+
+- **Declarative programming**: Through data cleaning, we will certainly be utilizing tools such as ```dplyr``` to carry out the work that we want to do. For example, we will probability utilize ```tidyverse``` heavily for the data cleaning and EDA portions of the project. 
+
+- **Machine Learning**: One of the more complex portions of this project includes making predictions based on the three data sets we have. We aren't entirely sure on the specific models we want to use to carry this out, but we do know that machine learning will take a big part in the final product. 
 
 ## Software
 
@@ -109,5 +132,7 @@ Each team member will work collaboratively within our shared repository on their
 
 - **Allison**: Lead for machine learning aspect, work on EDA with Fabiana
 
-- **Ania**: Slides, point person for cleaning the air quality data set, 
+- **Ania**: Slides, point person for cleaning the air quality data set
+
+The team will communicate daily through a groupchat and everyone will stay on top of updating the repository every time they make a substantial change. 
 
