@@ -35,7 +35,13 @@ execute:
 
 ## Research Question and Audience
 
-RQ: Is there an association between air quality and asthma flare-ups (described as Emergency Department Visits/Hospitalizations for asthma) in the United States at the State level?
+RQs: 
+
+1. Is there an association between air quality and asthma flare-ups (described as Emergency Department Visits/Hospitalizations for asthma) in the United States at the State level? Which states have stronger associations?
+
+- **Why does this matter?** Climate change exacerbates the health impacts of poor air quality. The WHO estimates that air pollution is responsible for 7 million premature deaths annually, making it one of the largest global risk factors for death, trailing only high blood pressure, smoking, and diabetes.  
+
+2. 
 
 ## Related Work
 
@@ -50,6 +56,8 @@ We additionally plan to request the Air quality data from the CDC National Envir
 1. USA EPA API: https://docs.airnowapi.org/
 
 2. CDC ER Data: https://ephtracking.cdc.gov/DataExplorer/
+
+3. Demographic/Economic API: https://www.census.gov/data/developers/data-sets.html 
 
 **Access**: 
 
@@ -66,11 +74,40 @@ We additionally plan to request the Air quality data from the CDC National Envir
 
 ## Timeline and Feasibility
 
+Tentative Deadlines:
+
+1. ***Tuesday, Nov 17***: Initial meeting with Prof. Hicks to discuss project proposal
+
+2. ***Friday, Nov 20***: Identify, access, and download necessary data across asthma, air quality, population demographics, and economic impacts.
+
+3. ***Monday, Nov 30***: All data sets cleaned by this point 
+
+4. ***Thursday, Dec 10***: Drafted product done
+
+5. ***Thursday, Dec 17***: In-class team presentation
+
+
+For the 5 remaining weeks of the term, we plan on setting goals for the tasks that we would like to get done. In the first week, we aim to import the JSON data into R and come up with a final analysis dataset, which we will use to create the figures that will be available on our dashboard. During the second week, we plan to finalize the relevant associations, such as the association between Ozone levels and asthma-related emergency room hospitalizations. During the third and fourth weeks, we plan to finalize the R Shiny dashboard in preparation for the final project presentation and to ensure that the results are accessible.
+
+
 ### Challenges:
 
-- There are some states where there is not sufficient evidence of Hospitalizations or Emergency Department visits within a given time period, and this poses a challenge for quantifying flare-ups for the United States as a whole.
+Potential challenges to tackling our research question are that for some metrics like asthma hospitalizations or emergency department visits, there are some states with no data for certain time periods. This could make it difficult to quantify flare-ups for the United States as a whole, but we would work to quantify flare-ups for the states that we do have and provide prevalence statistics for the other states.
+	
+Missing data for some states also makes it difficult to implement machine learning models on the national scale, but for this model we plan on implementing it using available data from certain states.
 
-- For the machine learning models we want to implement, we will not be able to do this for the United States as a whole since there are multiple states with no data.
 
 ## Team Responsibilities 
+
+Each team member will work collaboratively within our shared repository on their various responsibilities. Each individual will work on all parts of the project, but we decided to assign task leaders to serve as a point of contact for designated tasks. 
+
+- **Steph**: Point person for the Shiny dashboard portion of the project, lead for machine learning aspect
+
+- **Fabiana**: Clean the asthma data from the CDC API. Work on a significant portion of the figures that will be put on the dashboard (act as the EDA point person).
+
+- **Eva**: Point person for cleaning the economic/census data set, work on machine learning aspect with Allion and Steph. 
+
+- **Allison**: Lead for machine learning aspect, work on EDA with Fabiana
+
+- **Ania**: Slides, point person for cleaning the air quality data set, 
 
