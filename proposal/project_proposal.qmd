@@ -41,6 +41,18 @@ RQ: Is there an association between air quality and asthma flare-ups (described 
 
 ## Data and Access
 
+We plan on getting our data from the Centers for Disease Control and Prevention’s (CDC) National Environmental Public Health Tracking Network API. This API contains national, state, and county-level data on Asthma prevalence for adults and children, Emergency Department Visits for asthma, and hospitalizations for asthma. This API is free and accessible to use, which allows us to retrieve the JSON data and parse it into an R data set that we will inspect for missing values.
+
+We additionally plan to request the Air quality data from the CDC National Environmental Public Health Tracking Network API since this API contains county-level data for pollutants such as ozone levels and PM2.5 concentration that would serve useful. From this API, we will retrieve the JSON data and parse it into an R data set that we will further clean by removing missing values. If the data for a county or state of interest is not available in the CDC API, we plan on retrieving the data from the USA Environmental Protection Agency’s API on air quality. This API is free to retrieve data after creating an account, and we will retrieve the JSON data and import it into R. From there, we will account for missing values. 
+
+**API Links**: 
+
+1. USA EPA API: https://docs.airnowapi.org/
+
+2. CDC ER Data: https://ephtracking.cdc.gov/DataExplorer/
+
+**Access**: 
+
 ## Planned Work
 
 ## Programming Paradigms
@@ -53,6 +65,12 @@ RQ: Is there an association between air quality and asthma flare-ups (described 
 ## Product
 
 ## Timeline and Feasibility
+
+### Challenges:
+
+- There are some states where there is not sufficient evidence of Hospitalizations or Emergency Department visits within a given time period, and this poses a challenge for quantifying flare-ups for the United States as a whole.
+
+- For the machine learning models we want to implement, we will not be able to do this for the United States as a whole since there are multiple states with no data.
 
 ## Team Responsibilities 
 
