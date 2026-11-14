@@ -35,17 +35,29 @@ execute:
 
 ## Research Question and Audience
 
-**Research Questions**: 
+**Research Question**: Is there an association between air quality and asthma flare-ups (described as Emergency Department Visits/Hospitalizations for asthma) in the United States at the State level? Which states have stronger associations?
 
-1. Is there an association between air quality and asthma flare-ups (described as Emergency Department Visits/Hospitalizations for asthma) in the United States at the State level? Which states have stronger associations?
-
-- **Why does this matter?** Climate change exacerbates the health impacts of poor air quality. The WHO estimates that air pollution is responsible for 7 million premature deaths annually, making it one of the largest global risk factors for death, trailing only high blood pressure, smoking, and diabetes.  
-
-2. 
+**Why does this matter?** Climate change exacerbates the health impacts of poor air quality. The WHO estimates that air pollution is responsible for 7 million premature deaths annually, making it one of the largest global risk factors for death, trailing only high blood pressure, smoking, and diabetes.[^1] Climate change drives frequency and intensity of wildfires, increased tropospheric ozone, and stagnant air particularly in urban areas. Particulate matter and smog cause acute respiratory damage and increase asthma prevalence.[^2] Through this dashboard, we hope to evaluate how air quality and asthma rates vary geographically, which could inform at-risk populations, national economic impact, and potential policy interventions. 
 
 **Intended Audience**: As we are limiting our geographical region to the US at the state level, the intended audience would be people living in the US. Ideally, users can use it every day to check recent air quality statuses and predict those for the next few days as well.
 
 ## Related Work
+
+There are many different works involved with working with the air quality index and asthma or respiratory flare ups (which we refer to as emergency department visits and hospitalization). The Air Quality Index (AQI) has been used as an indicator of air quality and provides behavioral recommendations to reduce exposure and therefore harm. The University of Pittsburgh has conducted a test for association between the AQI and childhood asthma flare ups resulting in emergency department visits and hospitalizations. They used data from the Environmental Protective Agency (EPA) which was obtained for Allegheny County, Pennsylvania. They found that the AQI was associated with asthma flare ups among children in Allegheny County, primarily affecting Black and younger children.[^3]
+
+Another group assessed associations between emergency room visits for asthma and chronic obstructive pulmonary disease (COPD) with the zip code level of exposure to criteria air pollutants in New York State. This study utilizes the EPA’s National Emission Inventory database and ER visits to assess the correlation between both the chronic (asthma and COPD) and acute (asthma attacks) events that lead to ER visits. This study was limited to using only point source (fixed, stationary industrial and commercial facilities that release emissions) exposure data to be able to use the ER data at a zip code level.[^4] This study also adjusted the data on the poverty rates by zip code, which is an interesting factor we hope to involve in our project.
+
+A tool that is currently being used is called the BenMAP-CE which helps to estimate the health and economic effects of pollution. It predicts the number of and economic value of health impacts that are a result of changes in air quality. The economic values due to air quality change are calculated using two different metrics. One is called “Cost of Illness” which takes into account the expenses that someone must bear for air pollution related hospital admissions and ER visits which includes the value of medical expenses as well as lost wages. On the other hand, the “Willingness to Pay” metric accounts for the direct costs as well as pain and suffering, loss of satisfaction, and leisure time.[^5]
+
+Throughout the existing literature, a consistent finding emerges—poor air quality has a significant association with increased emergency department visits and hospitalizations for asthma and other respiratory conditions. Short-term exposure to air pollutants especially contribute to these adverse health outcomes, resulting in substantial healthcare utilization and socioeconomic burden.[^6]
+
+The CDC Heat & Health[^7] dashboard shows a heatmap of daily heat-related illness for the United States. This is an example dashboard that we would want our own to somewhat resemble. Users are allowed to select the current or a past date to customize the heatmap display. There is an option to enter ZIP codes or county names to take a closer look at the data for the specified region. For example, when 21205 (East Baltimore) is entered, the dashboard outputs the day’s heat risk, heat forecast for the next week, a graph comparing daily maximum temperature to historical averages, a heatmap with different heat health index options, and the region’s demographics.
+
+Dr. Datta at JHU has made a Baltimore Air Quality Dashboard[^8], which displays the current PM2.5 level, the weather, the PM2.5 level variations by day and hour, and a static as well as a dynamic heatmap of the PM2.5 level across the city. Historical data is contained in a separate tab with options to view them in the form of an area map, a city map, or informative statistical graphs.
+
+After careful review of such dashboards, we would want ours to display similar customizations and information. It is a goal for our final product to be user-friendly and adaptable to the location the user resides in. However, our group’s final product would incorporate data such as region-specific asthma flare-ups and socioeconomic statuses to add dimension to our analysis and exploration.
+
+Although existing research has demonstrated associations between outdoor air pollution and asthma related health outcomes, many studies have focused on individual counties, cities, or states rather than examining these relationships across the United States. A nationwide analysis could provide a broader understanding of how these associations vary geographically and whether certain states experience disproportionately greater health impacts. Additionally, differences in socioeconomic conditions, population demographics, and access to healthcare may contribute to variations in asthma-related healthcare utilization across regions. By combining air quality measurements with state-specific health and socioeconomic data, our project aims to build upon existing research by examining both the overall association between outdoor air pollution and asthma-related outcomes and the geographic variation in these relationships.
 
 ## Data and Access
 
@@ -66,13 +78,12 @@ API requests will specify the relevant ACS variables and geographic level, retur
 
 3. Demographic/Economic API: https://www.census.gov/data/developers/data-sets.html 
 
-**Access**: 
 
 ## Planned Work
 
 1. General EDA on EPA API air quality and CDC ER datasets
 
-2. 
+2. Use machine learning to make predictions about asthma prevalence
 
 3. Develop Shiny dashboard
 
@@ -86,7 +97,7 @@ We aren't 100% knowledgeable of the exact tasks we will be carrying out for this
 
 - **Declarative programming**: Through data cleaning, we will certainly be utilizing tools such as ```dplyr``` to carry out the work that we want to do. For example, we will probability utilize ```tidyverse``` heavily for the data cleaning and EDA portions of the project. 
 
-- **Machine Learning**: One of the more complex portions of this project includes making predictions based on the three data sets we have. We aren't entirely sure on the specific models we want to use to carry this out, but we do know that machine learning will take a big part in the final product. 
+- **Machine Learning**: One of the more complex portions of this project includes making predictions based on the three data sets we have. We aren't entirely sure on the specific models we want to use to carry this out, but we do know that machine learning will take a big part in the final product. For example, geographic/AQI/demographic info can shape predictions about asthma prevalence. 
 
 ## Software
 
@@ -94,6 +105,9 @@ We aren't 100% knowledgeable of the exact tasks we will be carrying out for this
 - Packages: Shiny, ggplot, dplyr, tidyverse, machine learning packages (ie. randomForest, xgboost, caret)
 
 ## Product
+
+We will develop an interactive R Shiny dashboard that allows users to explore the geographic distribution of air pollution and asthma burden across the United States. The dashboard will integrate environmental data on air pollutants, including PM2.5 and ground-level ozone, with public health indicators such as asthma prevalence among adults and children, asthma-related emergency department visits, and hospitalizations at the state and county levels, where available. Additionally, we will incorporate demographic, socioeconomic, and housing information, including income, poverty rates, educational attainment, health insurance coverage, and population characteristics, to examine how social determinants of health may relate to environmental exposures and asthma outcomes. Users will be able to select geographic locations, including individual states and counties, and stratify results by demographic characteristics to explore differences in environmental exposures and asthma-related health outcomes across populations. The dashboard will offer customizable data visualizations and potentially interactive exploratory data analysis (EDA), allowing users to select variables, compare indicators, and investigate patterns within the integrated datasets. We also plan to incorporate a machine learning component using interpretable predictive models to explore whether asthma prevalence and related health outcomes can be predicted using environmental, geographic, and demographic characteristics. For example, users could examine how county-level air pollution concentrations, population characteristics, and socioeconomic indicators relate to predicted asthma prevalence. The dashboard will be designed for public health researchers, policymakers, environmental health professionals, and the general public. We plan to publish the application on the Shiny hosting server, making it publicly accessible through a web browser without requiring users to install R or have programming experience.
+
 
 ## Timeline and Feasibility
 
@@ -113,11 +127,15 @@ Tentative Deadlines:
 For the 5 remaining weeks of the term, we plan on setting goals for the tasks that we would like to get done. In the first week, we aim to import the JSON data into R and come up with a final analysis dataset, which we will use to create the figures that will be available on our dashboard. During the second week, we plan to finalize the relevant associations, such as the association between Ozone levels and asthma-related emergency room hospitalizations. During the third and fourth weeks, we plan to finalize the R Shiny dashboard in preparation for the final project presentation and to ensure that the results are accessible.
 
 
-### Challenges:
+### Potential Challenges
 
 Potential challenges to tackling our research question are that for some metrics like asthma hospitalizations or emergency department visits, there are some states with no data for certain time periods. This could make it difficult to quantify flare-ups for the United States as a whole, but we would work to quantify flare-ups for the states that we do have and provide prevalence statistics for the other states.
 	
 Missing data for some states also makes it difficult to implement machine learning models on the national scale, but for this model we plan on implementing it using available data from certain states.
+
+## Manageable initial version of the product:
+
+An interactive R Shiny dashboard where users can see relevant figures on the presence of air pollutants, prevalence of asthma by state and age status, and figures on the association between air pollutant levels and asthma-related emergency room visits and hospitalizations. A baseline analysis that uses general machine learning topics such as clustering and regression to discover underlying patterns and make predictions about the data. 
 
 
 ## Team Responsibilities 
@@ -135,4 +153,23 @@ Each team member will work collaboratively within our shared repository on their
 - **Ania**: Slides, point person for cleaning the air quality data set
 
 The team will communicate daily through a groupchat and everyone will stay on top of updating the repository every time they make a substantial change. 
+
+
+
+
+[^1]: Council on Foreign Relations. How climate change affects our health. Accessed November 13, 2026. https://www.cfr.org/education/learn/reading/how-climate-change-affects-our-health
+
+[^2]: US Environmental Protection Agency. Air quality and climate change research. Accessed November 13, 2026. https://www.epa.gov/air-research/air-quality-and-climate-change-research
+
+[^3]: Rosser F, Han YY, Rothenberger SD, Forno E, Mair C, Celedón JC. Air quality index and emergency department visits and hospitalizations for childhood asthma. Ann Am Thorac Soc. 2022;19(7):1139-1148. doi:10.1513/AnnalsATS.202105-539OC
+
+[^4]: Lebbie TS, Jones LE, Madani NA, Carpenter DO. Associations between emergency room visits for respiratory diseases and exposure to zip code-level criteria air pollutants in New York State. Atmosphere. 2026;17(3):322. doi:10.3390/atmos17030322
+
+[^5]: US Environmental Protection Agency. How BenMAP-CE estimates the health and economic effects of air pollution. Published May 20, 2026. Accessed November 13, 2026. https://www.epa.gov/benmap/how-benmap-ce-estimates-health-and-economic-effects-air-pollution
+
+[^6]: Zheng XY, Ding H, Jiang LN, et al. Association between air pollutants and asthma emergency room visits and hospital admissions in time series studies: a systematic review and meta-analysis. PLoS One. 2015;10(9):e0138146. doi:10.1371/journal.pone.0138146
+
+[^7]: Centers for Disease Control and Prevention. Heat & Health Tracker. Accessed November 13, 2026. https://ephtracking.cdc.gov/Applications/heatTracker/
+
+[^8]: Johns Hopkins University. Baltimore Air Quality Dashboard. Accessed November 13, 2026. https://web.idies.jhu.edu/airquality/dashboard/realtime
 
