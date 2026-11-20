@@ -1,0 +1,67 @@
+---
+title: "Asthma Data Retrieval"
+subtitle: "Statistical Programming Paradigms and Workflows (BSPH 140.777)"
+author: "Fabiana Lopez Muniz"
+format:
+  pdf:
+    documentclass: article
+    papersize: letter
+    geometry:
+      - margin=0.8in
+    fontsize: 11pt
+    linestretch: 1.05
+    colorlinks: false
+    toc: false
+header-includes:
+  - |
+    \usepackage{etoolbox}
+    \usepackage{needspace}
+    \BeforeBeginEnvironment{Shaded}{\par\noindent\begin{minipage}{\linewidth}}
+    \AfterEndEnvironment{Shaded}{\end{minipage}}
+engine: knitr
+execute:
+  echo: true
+  warning: false
+---
+
+## Packages
+```{r}
+#| echo: FALSE
+
+library(jsonlite)
+library(ggplot2)
+library(dplyr)
+library(httr)
+library(EPHTrackR)
+```
+
+
+## GET request data
+
+```{r}
+cdc_url <- "https://ephtracking.cdc.gov/apigateway/api/v1/indicators/3"
+
+response <- GET(cdc_url)
+
+# checking the request status
+status_code(response)
+
+
+# Inspect the response
+indicator_text <- content(
+  response,
+  "text",
+  encoding = "UTF-8"
+)
+
+flattened_indicator <- fromJSON(
+  content(response, "text"),
+  flatten = TRUE
+)
+
+head(flattened_indicator, 5)
+
+asthma_measures <- list_measures(content_area = 3) # retrieving from EPHTrackR package
+
+View(asthma_measures)
+```
